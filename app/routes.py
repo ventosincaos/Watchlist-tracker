@@ -52,8 +52,8 @@ def add_movie():
 
     movies.append(movie)
     return jsonify({"success": True, "movie": movie}), 201
-    
-    
+
+
 @bp.route("/movies/<int:index>", methods=["DELETE"])
 def delete_movie(index):
     try:
