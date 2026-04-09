@@ -36,27 +36,6 @@ Qualquer pessoa que assista filmes e queira manter um registro pessoal simples, 
 - pytest
 - ruff
 
-## Estrutura do Projeto
-Watchlist-tracker/
-├── app/
-│   ├── init.py
-│   ├── data_store.py
-│   └── routes.py
-├── static/
-│   ├── main.js
-│   └── style.css
-├── templates/
-│   └── index.html
-├── tests/
-│   └── test_routes.py
-├── .github/workflows/ci.yml
-├── conftest.py
-├── pyproject.toml
-├── requirements.txt
-├── VERSION
-├── README.md
-└── run.py
-
 ## Instalação e Execução
 
 1. Clone o repositório:
