@@ -90,6 +90,10 @@ ruff check app/
 
 ventosincaos — https://github.com/ventosincaos
 
+### Disciplina
+
+Bootcamp II
+
 ## Repositório
 
 https://github.com/ventosincaos/Watchlist-tracker
