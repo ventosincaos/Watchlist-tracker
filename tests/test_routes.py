@@ -101,3 +101,70 @@ def test_importar(client):
 
     assert res.status_code == 200
     assert res.get_json()["count"] == 1
+
+def test_add_movie_sem_nome(client):
+    res = client.post("/movies", data={
+        "name": "",
+        "genre": "Ação",
+        "platform": "Netflix",
+        "release_date": "2003",
+        "watched_date": "2024-01-01",
+        "rating": "8",
+        "review": "Ótimo filme"
+    })
+    assert res.status_code == 400
+
+def test_add_movie_rating_zero(client):
+    res = client.post("/movies", data={
+        "name": "Filme Sem Nota",
+        "genre": "Drama",
+        "platform": "Netflix",
+        "release_date": "2020",
+        "watched_date": "2024-01-01",
+        "rating": "0",
+        "review": ""
+    })
+    assert res.status_code == 201
+    data = res.get_json()
+    assert data["movie"]["rating"] == 0
+
+def test_add_movie_rating_maximo(client):
+    res = client.post("/movies", data={
+        "name": "Filme Perfeito",
+        "genre": "Ação",
+        "platform": "Cinema",
+        "release_date": "2024",
+        "watched_date": "2024-12-31",
+        "rating": "10",
+        "review": "Incrível"
+    })
+    assert res.status_code == 201
+    data = res.get_json()
+    assert data["movie"]["rating"] == 10
+
+def test_add_movie_sem_review(client):
+    res = client.post("/movies", data={
+        "name": "Filme Sem Review",
+        "genre": "Comédia",
+        "platform": "Prime Video",
+        "release_date": "2022",
+        "watched_date": "2024-06-01",
+        "rating": "5",
+        "review": ""
+    })
+    assert res.status_code == 201
+
+def test_delete_primeiro_de_varios(client):
+    client.post("/movies", data={"name": "Filme A", "genre": "Ação",
+        "platform": "Netflix", "release_date": "2020",
+        "watched_date": "2024-01-01", "rating": "5", "review": ""})
+    client.post("/movies", data={"name": "Filme B", "genre": "Drama",
+        "platform": "Netflix", "release_date": "2021",
+        "watched_date": "2024-02-01", "rating": "7", "review": ""})
+
+    res = client.delete("/movies/0")
+    assert res.status_code == 200
+
+    res = client.get("/movies")
+    filmes = res.get_json()
+    assert filmes[0]["name"] == "Filme B"

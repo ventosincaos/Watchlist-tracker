@@ -29,6 +29,9 @@ def add_movie():
     rating = request.form.get("rating")
     review = request.form.get("review")
 
+    if not name:
+        return jsonify({"error": "Nome é obrigatório"}), 400
+
     image_url = "/static/uploads/default.jpg"
     file = request.files.get("image")
     if file and allowed_file(file.filename):
@@ -49,7 +52,8 @@ def add_movie():
 
     movies.append(movie)
     return jsonify({"success": True, "movie": movie}), 201
-
+    
+    
 @bp.route("/movies/<int:index>", methods=["DELETE"])
 def delete_movie(index):
     try:
