@@ -20,8 +20,8 @@ body {
 .slider-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    gap: 4px;
+    align-items: center;
+    gap: 10px;
     flex: 1;
     justify-content: center;
 }
@@ -29,6 +29,7 @@ body {
 .slider-actions {
     display: flex;
     gap: 10px;
+    align-self: flex-end;
     padding-right: 76px;
 }
 
@@ -41,6 +42,9 @@ body {
     border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
+    display: inline-block;
 }
 
 .slider-wrapper {
@@ -398,7 +402,7 @@ body {
 /* Dots */
 .dots {
     padding: 16px;
-    display: flex;
+    display:flex;
     gap: 8px;
 }
 
@@ -406,15 +410,11 @@ body {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: #bbb;
+    background: #666666;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: opacity 0.3s, transform 0.3s, background 0.2s;
 }
 
 .dot.active {
     background: #222222;
-}
-
-.date-field input[type="number"] {
-    -moz-appearance: textfield;
 }

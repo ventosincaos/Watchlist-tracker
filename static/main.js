@@ -29,13 +29,28 @@ function prevSlide() {
 function updateDots() {
     const dots = document.getElementById("dots");
     const cards = getCards();
+    const total = cards.length;
     dots.innerHTML = "";
-    cards.forEach((_, i) => {
+
+    const visible = 5;
+    const half = Math.floor(visible / 2);
+
+    let start = currentIndex - half;
+    let end = currentIndex + half;
+
+    if (start < 0) { start = 0; end = Math.min(visible - 1, total - 1); }
+    if (end >= total) { end = total - 1; start = Math.max(0, end - visible + 1); }
+
+    for (let i = start; i <= end; i++) {
         const dot = document.createElement("div");
+        const distance = Math.abs(i - currentIndex);
+
         dot.className = "dot" + (i === currentIndex ? " active" : "");
+        dot.style.opacity = distance === 0 ? "1" : distance === 1 ? "0.8" : "0.7";
+        dot.style.transform = `scale(${distance === 0 ? 1 : distance === 1 ? 0.9 : 0.75})`;
         dot.onclick = () => { currentIndex = i; showSlide(i); };
         dots.appendChild(dot);
-    });
+    }
 }
 
 // ————— FORMULÁRIO —————

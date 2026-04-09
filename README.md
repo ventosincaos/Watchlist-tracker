@@ -34,7 +34,7 @@ Qualquer pessoa que assista filmes e queira manter um registro pessoal simples, 
 ![Watchlist Tracker](preview/watchlist-0.png)
 ![Watchlist Tracker](preview/watchlist-1.png)
 ![Watchlist Tracker](preview/watchlist-form.png)
-![Watchlist Tracker](preview/test.png)
+![Watchlist Tracker](preview/tests.png)
 
 ## Tecnologias
 
