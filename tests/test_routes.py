@@ -53,6 +53,8 @@ def test_delete_inexistente(client):
 
 def test_add_movie_com_imagem(client):
     import io
+    import os
+    os.makedirs("static/uploads", exist_ok=True)
     imagem_fake = (io.BytesIO(b"fake image content"), "poster.jpg")
 
     res = client.post("/movies", data={
