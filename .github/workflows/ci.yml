@@ -3,7 +3,19 @@ name: CI
 on: [push, pull_request]
 
 jobs:
+  lint:
+    name: Linting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+      - run: pip install ruff
+      - run: ruff check app/
+
   test:
+    name: Testes
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -11,5 +23,4 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
-      - run: ruff check app/
       - run: pytest tests/ -v
