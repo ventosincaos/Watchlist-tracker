@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Watchlist</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="slider-container">
+
+        <div class="slider-actions">
+            <button onclick="exportMovies()">Exportar</button>
+            <label class="import-btn">Importar
+                <input type="file" accept=".json" onchange="importMovies(event)" hidden>
+            </label>
+        </div>
+
+        <div class="slider-wrapper">
+            <button class="arrow left-arrow" onclick="prevSlide()">&#8592;</button>
+
+            <div class="slider">
+
+                <!-- Card de adicionar -->
+                <div class="card add-card" id="add-card">
+                    <div class="add-face" id="add-face">
+                        <span class="plus-icon">+</span>
+                        <p>Adicionar filme</p>
+                    </div>
+                    <div class="form-face hidden" id="form-face">
+                        <div class="form-left">
+                            <label class="img-upload" id="img-label">
+                                <input type="file" id="img-input" accept="image/*" onchange="previewImage(event)">
+                                <i class="fa-regular fa-image"></i>
+                                <span>Clique para adicionar capa</span>
+                                <img id="img-preview" alt="Capa">
+                            </label>
+                        </div>
+                        <div class="form-right">
+                            <input type="text" id="f-name" placeholder="Nome do filme">
+                            <div class="form-row">
+                                <select id="f-genre">
+                                    <option value="">Gênero</option>
+                                    <option>Ação</option>
+                                    <option>Comédia</option>
+                                    <option>Drama</option>
+                                    <option>Terror</option>
+                                    <option>Ficção Científica</option>
+                                    <option>Animação</option>
+                                    <option>Documentário</option>
+                                    <option>Romance</option>
+                                </select>
+                                <select id="f-platform">
+                                    <option value="">Plataforma</option>
+                                    <option>Netflix</option>
+                                    <option>Prime Video</option>
+                                    <option>Disney+</option>
+                                    <option>HBO Max</option>
+                                    <option>Apple TV+</option>
+                                    <option>Cinema</option>
+                                    <option>Outro</option>
+                                </select>
+                            </div>
+                            <div class="form-row">
+                                <div class="date-field">
+                                    <label>Lançamento</label>
+                                    <input type="number" id="f-release" placeholder="2024" min="1900" max="2100">
+                                </div>
+                                <div class="date-field">
+                                    <label>Assistido em</label>
+                                    <input type="date" id="f-watched">
+                                </div>
+                            </div>
+                            <div class="stars-input" id="stars-input">
+                                <span onclick="setRating(1)">★</span>
+                                <span onclick="setRating(2)">★</span>
+                                <span onclick="setRating(3)">★</span>
+                                <span onclick="setRating(4)">★</span>
+                                <span onclick="setRating(5)">★</span>
+                                <span onclick="setRating(6)">★</span>
+                                <span onclick="setRating(7)">★</span>
+                                <span onclick="setRating(8)">★</span>
+                                <span onclick="setRating(9)">★</span>
+                                <span onclick="setRating(10)">★</span>
+                            </div>
+                            <input type="hidden" id="f-rating" value="0">
+                            <textarea id="f-review" placeholder="Sua review..."></textarea>
+                            <div class="form-actions">
+                                <button class="cancel-btn" onclick="toggleForm(event)">Cancelar</button>
+                                <button class="save-btn" onclick="submitMovie()">Salvar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="arrow right-arrow" onclick="nextSlide()">&#8594;</button>
+        </div>
+    </div>
+
+    <div class="dots" id="dots"></div>
+
+    <script src="/static/main.js"></script>
+</body>
+</html>
