@@ -28,6 +28,14 @@ Qualquer pessoa que assista filmes e queira manter um registro pessoal simples, 
 - Exportar a lista em formato `.json`
 - Importar uma lista previamente exportada
 
+## Preview
+
+![Watchlist Tracker](preview/watchlist-0.png)
+![Watchlist Tracker](preview/watchlist-1.png)
+![Watchlist Tracker](preview/watchlist-2.png)
+![Watchlist Tracker](preview/watchlist-form.png)
+![Watchlist Tracker](preview/test.png)
+
 ## Tecnologias
 
 - Python 3.12
