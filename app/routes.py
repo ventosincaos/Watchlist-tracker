@@ -1,9 +1,12 @@
 import os
 import json
 import requests
+import dotenv
 from flask import Blueprint, jsonify, request, render_template, send_file
 from werkzeug.utils import secure_filename
-from app.data_store import movies
+from app.data_store import movies, save_movies
+
+dotenv.load_dotenv()
 
 bp = Blueprint("main", __name__)
 
@@ -34,7 +37,12 @@ def add_movie():
     if not name:
         return jsonify({"error": "Nome é obrigatório"}), 400
 
-    image_url = "/static/uploads/default.jpg"
+    image_url = ""
+
+    poster_url = request.form.get("poster_url")
+    if poster_url:
+        image_url = poster_url
+
     file = request.files.get("image")
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
@@ -53,6 +61,7 @@ def add_movie():
     }
 
     movies.append(movie)
+    save_movies(movies)
     return jsonify({"success": True, "movie": movie}), 201
 
 # ————— BUSCA OMDB — vem ANTES da rota com <int:index> —————
@@ -88,6 +97,7 @@ def search_movie():
 def delete_movie(index):
     try:
         removed = movies.pop(index)
+        save_movies(movies)
         return jsonify({"success": True, "removed": removed})
     except IndexError:
         return jsonify({"error": "Filme não encontrado"}), 404
@@ -107,4 +117,5 @@ def import_movies():
     data = json.load(file)
     movies.clear()
     movies.extend(data)
+    save_movies(movies)
     return jsonify({"success": True, "count": len(movies)})

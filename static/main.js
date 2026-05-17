@@ -1,5 +1,6 @@
 let currentIndex = 0;
 let movies = [];
+let omdbPoster = "";
 
 // ————— SLIDER —————
 
@@ -126,13 +127,13 @@ async function searchOMDb() {
         img.classList.add("visible");
         document.querySelector("#img-label i").style.display = "none";
         document.querySelector("#img-label span").style.display = "none";
+        omdbPoster = data.poster;
     }
 }
 
 // ————— SUBMIT —————
 
 async function submitMovie() {
-    toggleForm(null);
     const name = document.getElementById("f-name").value.trim();
     const genre = document.getElementById("f-genre").value;
     const platform = document.getElementById("f-platform").value;
@@ -153,6 +154,7 @@ async function submitMovie() {
     formData.append("rating", rating);
     formData.append("review", review);
     if (imageFile) formData.append("image", imageFile);
+    if (omdbPoster && !imageFile) formData.append("poster_url", omdbPoster);
 
     await fetch("/movies", { method: "POST", body: formData });
 
@@ -163,8 +165,14 @@ async function submitMovie() {
     document.getElementById("f-watched").value = "";
     document.getElementById("f-rating").value = "0";
     document.getElementById("f-review").value = "";
-    document.getElementById("img-preview").src = "/static/uploads/default.jpg";
+    document.getElementById("img-input").value = "";
+    const imgPreview = document.getElementById("img-preview");
+    imgPreview.src = "";
+    imgPreview.classList.remove("visible");
+    document.querySelector("#img-label i").style.display = "";
+    document.querySelector("#img-label span").style.display = "";
     document.querySelectorAll("#stars-input span").forEach(s => s.classList.remove("active"));
+    omdbPoster = "";
     toggleForm();
 
     await loadMovies();

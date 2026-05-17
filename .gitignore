@@ -6,3 +6,4 @@ movies_export.json
 .pytest_cache/
 .ruff_cache/
 .vscode/
+.env
