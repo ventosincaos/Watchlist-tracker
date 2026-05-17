@@ -107,7 +107,7 @@ const genreMap = {
 
 async function searchOMDb() {
     const name = document.getElementById("f-name").value.trim();
-    if (!name) return alert("Digite o nome do filme primeiro!");
+    if (!name) return alert("Digite o nome do filme em inglês!");
 
     const res = await fetch(`/movies/search?q=${encodeURIComponent(name)}`);
     if (!res.ok) return alert("Filme não encontrado na OMDb.");
