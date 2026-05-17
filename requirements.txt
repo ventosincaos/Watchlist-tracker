@@ -1,0 +1,6 @@
+flask
+pytest
+werkzeug
+ruff
+requests
+gunicorn
