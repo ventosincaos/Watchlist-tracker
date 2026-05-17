@@ -5,6 +5,9 @@
 ![Flask](https://img.shields.io/badge/flask-3.x-lightgrey)
 ![Version](https://img.shields.io/badge/version-1.0.0-green)
 
+## 🚀 Deploy
+Acesse a aplicação em: https://watchlist-tracker-ul9y.onrender.com/
+
 ## O Problema
 
 As soluções disponíveis para manter registro de filmes são plataformas sociais completas, que exigem cadastro, conexão com internet e armazenam dados em servidores de terceiros. 
