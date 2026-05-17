@@ -5,7 +5,8 @@
 ![Flask](https://img.shields.io/badge/flask-3.x-lightgrey)
 ![Version](https://img.shields.io/badge/version-1.0.0-green)
 
-## 🚀 Deploy
+## Deploy
+
 Acesse a aplicação em: https://watchlist-tracker-ul9y.onrender.com/
 
 ## O Problema
@@ -36,8 +37,8 @@ Qualquer pessoa que assista filmes e queira manter um registro pessoal simples, 
 ![Watchlist Tracker](preview/watchlist-add.png)
 ![Watchlist Tracker](preview/watchlist-0.png)
 ![Watchlist Tracker](preview/watchlist-1.png)
-![Watchlist Tracker](preview/watchlist-form.png)
-![Watchlist Tracker](preview/tests.png)
+![Watchlist Tracker](preview/watchlist-form2.png)
+![Watchlist Tracker](preview/tests2.png)
 
 ## Tecnologias
 
@@ -46,6 +47,20 @@ Qualquer pessoa que assista filmes e queira manter um registro pessoal simples, 
 - HTML + CSS + JavaScript
 - pytest
 - ruff
+
+## Dependências
+
+- flask
+- pytest
+- werkzeug
+- ruff
+- requests
+- gunicorn
+- python-dotenv
+
+## API
+
+Integração com [OMDb API](https://www.omdbapi.com/) para busca automática de pôster, ano de lançamento e gênero a partir do nome do filme.
 
 ## Instalação e Execução
 
@@ -100,3 +115,4 @@ Bootcamp II
 ## Repositório
 
 https://github.com/ventosincaos/Watchlist-tracker
+
