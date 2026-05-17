@@ -26,6 +26,7 @@ Qualquer pessoa que assista filmes e queira manter um registro pessoal simples, 
 ## Funcionalidades
 
 - Adicionar filmes com capa, título, gênero, plataforma, ano de lançamento, avaliação (1-10 estrelas) e review pessoal
+- Buscar filmes pelo seu nome na lingua inglesa e, automaticamente, pela API OMDb resgatar pôster, ano e gênero e preenche-los automaticamente
 - Navegar entre os filmes em um slider de cards
 - Registrar a data em que o filme foi assistido
 - Remover filmes individualmente
